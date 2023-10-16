@@ -18,8 +18,8 @@ python BardMain.py
 
     
 ## Dependencies
-python --version >= 3.6.13
-tkinter library should be present in the venv
+python --version >= 3.6.13 \
+tkinter library should be present in the venv \
 bardapi version >= 0.1.38 should be present in the venv
 ## Documentation
 
