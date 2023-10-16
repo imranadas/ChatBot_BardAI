@@ -53,40 +53,45 @@ def get_auth_info():
     return input1, input2, input3
 
 def bard_ui(PSID, PSIDCC, PSIDTS):
-    import requests
-    from bardapi import Bard, SESSION_HEADERS
-    session = requests.Session()
-    token = PSID
-    session.cookies.set("__Secure-1PSID", PSID)
-    session.cookies.set( "__Secure-1PSIDCC", PSIDCC)
-    session.cookies.set("__Secure-1PSIDTS", PSIDTS)
-    session.headers = SESSION_HEADERS
-    def get_answer():
-        question = question_entry.get()
+    import tkinter as tk
+    def send_message():
+        user_message = entry.get()
+        chat_box.insert(tk.END, f"You: {user_message}\n")
+        entry.delete(0, tk.END)
+        import requests
+        from bardapi import Bard, SESSION_HEADERS
+        session = requests.Session()
+        token = PSID
+        session.cookies.set("__Secure-1PSID", PSID)
+        session.cookies.set( "__Secure-1PSIDCC", PSIDCC)
+        session.cookies.set("__Secure-1PSIDTS", PSIDTS)
+        session.headers = SESSION_HEADERS
+        question = user_message
         bard = Bard(token=token, session=session)
         data = bard.get_answer(question)
         answer = data['content']
-        print(data['content'])
-        answer_label.config(text=answer)
+        response = f"Bot: {answer}\n"
+        chat_box.insert(tk.END, response)
+        chat_box.see(tk.END)
 
     root = tk.Tk()
-    root.title("Bard UI")
-    root.geometry("800x600")
+    root.title("Chatbot")
+    root.geometry("400x500")
 
-    frame = ttk.Frame(root, padding=(10, 10))
-    frame.grid(row=0, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
-    frame.columnconfigure(0, weight=1)
+    chat_frame = tk.Frame(root)
+    chat_frame.pack(pady=10)
 
-    question_label = ttk.Label(frame, text="Ask a question:")
-    question_label.grid(row=0, column=0, sticky=tk.W, pady=(0, 5))
+    scrollbar = tk.Scrollbar(chat_frame)
+    scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
 
-    question_entry = ttk.Entry(frame, width=40)
-    question_entry.grid(row=1, column=0, padx=(0, 5))
+    chat_box = tk.Text(chat_frame, wrap=tk.WORD, yscrollcommand=scrollbar.set, height=15, width=40)
+    chat_box.pack(side=tk.LEFT, fill=tk.BOTH)
+    scrollbar.config(command=chat_box.yview)
 
-    get_answer_button = ttk.Button(frame, text="Get Answer", command=get_answer)
-    get_answer_button.grid(row=1, column=1)
+    entry = tk.Entry(root, font=("Helvetica", 12))
+    entry.pack(pady=10, padx=10, ipady=5, fill=tk.X, expand=True)
 
-    answer_label = ttk.Label(frame, text="", font=("Helvetica", 12, "bold"), wraplength=350)
-    answer_label.grid(row=2, column=0, columnspan=2, pady=(10, 0))
+    send_button = tk.Button(root, text="Send", command=send_message, bg="#4CAF50", fg="white", font=("Helvetica", 12))
+    send_button.pack(pady=5)
 
-    root.mainloop()
+    return root
