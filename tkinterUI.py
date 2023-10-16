@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 
-def get_auth_info():
+def get_auth_info(): #Function to Take Cookies and Token required for Authentication.
     def submit():
         global input1, input2, input3
         input1 = entry1.get()
@@ -15,7 +15,6 @@ def get_auth_info():
     root = tk.Tk()
     root.title("Bard Authentication UI")
 
-    # Set window dimensions and position
     window_width = 800
     window_height = 250
     screen_width = root.winfo_screenwidth()
@@ -24,7 +23,6 @@ def get_auth_info():
     y_position = (screen_height - window_height) // 2
     root.geometry(f"{window_width}x{window_height}+{x_position}+{y_position}")
 
-    # Set a custom background color
     root.configure(bg='#f0f0f0')
 
     label1 = tk.Label(root, text="PSID:", bg='#f0f0f0')
@@ -52,22 +50,13 @@ def get_auth_info():
 
     return input1, input2, input3
 
-def bard_ui(PSID, PSIDCC, PSIDTS):
+def bard_ui(bard): #Main Chat Window code.
     import tkinter as tk
     def send_message():
         user_message = entry.get()
         chat_box.insert(tk.END, f"You: {user_message}\n")
         entry.delete(0, tk.END)
-        import requests
-        from bardapi import Bard, SESSION_HEADERS
-        session = requests.Session()
-        token = PSID
-        session.cookies.set("__Secure-1PSID", PSID)
-        session.cookies.set( "__Secure-1PSIDCC", PSIDCC)
-        session.cookies.set("__Secure-1PSIDTS", PSIDTS)
-        session.headers = SESSION_HEADERS
         question = user_message
-        bard = Bard(token=token, session=session)
         data = bard.get_answer(question)
         answer = data['content']
         response = f"Bot: {answer}\n"

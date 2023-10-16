@@ -1,5 +1,7 @@
 from BardAuth import PSID, PSIDTS, PSIDCC
 from tkinterUI import bard_ui
+from BardAuth import bard_connect
 
-chat_window = bard_ui(PSID, PSIDCC, PSIDTS)
+bard = bard_connect()
+chat_window = bard_ui(bard)
 chat_window.mainloop()
