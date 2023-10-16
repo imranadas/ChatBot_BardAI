@@ -64,12 +64,14 @@ def bard_ui(PSID, PSIDCC, PSIDTS):
     def get_answer():
         question = question_entry.get()
         bard = Bard(token=token, session=session)
-        answer = bard.get_answer(question)
+        data = bard.get_answer(question)
+        answer = data['content']
+        print(data['content'])
         answer_label.config(text=answer)
 
     root = tk.Tk()
     root.title("Bard UI")
-    root.geometry("400x200")
+    root.geometry("800x600")
 
     frame = ttk.Frame(root, padding=(10, 10))
     frame.grid(row=0, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
