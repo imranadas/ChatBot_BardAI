@@ -11,15 +11,32 @@ Google's experimental AI, Bard; implemented in python environment
 ```
 git clone https://github.com/imranadas/ChatBot_BardAI.git
 ```
-2. Run BardMain.py in a venv with dependencies installed.
+2.Run BardMain.py in a venv with dependencies installed.
 ```
 python BardMain.py
 ```
-
-    
+Recommended:
+Install Python Venv with 
+```
+python venv -m Your_Venv_Name /path/to/your/venv/location
+```
+Activate your Venv in your editor of choice
+```
+/path/to/your/venv/Scripts/Activate.ps1
+```
+Install dependencies
+```
+pip install bardapi==0.1.38
+pip install tk
+```
+Clone My repo as instructed above
+Run the Program in terminal using
+```
+/path/to/venv/Scripts/python.exe /path/to/repo/BardMain.py
+```
 ## Dependencies
-python --version >= 3.6.13 \
-tkinter library should be present in the venv \
+python --version >= 3.6.13
+tkinter library should be present in the venv
 bardapi version >= 0.1.38 should be present in the venv
 ## Documentation
 
