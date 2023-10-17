@@ -29,14 +29,14 @@ Install dependencies
 pip install bardapi==0.1.38
 pip install tk
 ```
-Clone My repo as instructed above
+Clone My repo as instructed above\
 Run the Program in terminal using
 ```
 /path/to/venv/Scripts/python.exe /path/to/repo/BardMain.py
 ```
 ## Dependencies
-python --version >= 3.6.13
-tkinter library should be present in the venv
+python --version >= 3.6.13\
+tkinter library should be present in the venv\
 bardapi version >= 0.1.38 should be present in the venv
 ## Documentation
 
