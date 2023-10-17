@@ -7,7 +7,7 @@ Google's experimental AI, Bard; implemented in python environment
 
 ## Installation
 
-1.Clone github repo: https://github.com/imranadas/ChatBot_BardAI \
+1.Clone github repo: https://github.com/imranadas/ChatBot_BardAI 
 ```
 git clone https://github.com/imranadas/ChatBot_BardAI.git
 ```
@@ -29,11 +29,29 @@ Install dependencies
 pip install bardapi==0.1.38
 pip install tk
 ```
-Clone My repo as instructed above\
+Clone My repo as instructed above \
 Run the Program in terminal using
 ```
 /path/to/venv/Scripts/python.exe /path/to/repo/BardMain.py
 ```
+
+## Authentication
+
+Application will ask for Authentication Keys
+\
+__Secure-1PSID \
+__Secure-1PSIDCC\
+__Secure-1PSIDTS\
+You can get these Tokens in \
+```
+https://bard.google.com/
+```
+Press F12\
+Goto Applications>Cookies>https://bard.google.com/\
+Copy __Secure-1PSID \
+__Secure-1PSIDCC\
+__Secure-1PSIDTS\
+and paste in the UI.
 ## Dependencies
 python --version >= 3.6.13\
 tkinter library should be present in the venv\
