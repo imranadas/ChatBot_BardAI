@@ -29,6 +29,7 @@ Install dependencies
 ```
 pip install bardapi==0.1.38
 pip install tk
+pip install -r /path/to/requirements.txt
 ```
 Clone My repo as instructed above \
 Run the Program in terminal using
