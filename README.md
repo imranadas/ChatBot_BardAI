@@ -2,6 +2,7 @@
 # ChatBot_BardAI
 
 Google's experimental AI, Bard; implemented in python environment
+![image](https://github.com/imranadas/ChatBot_BardAI/assets/63626672/34e92d68-14fc-4025-9cc5-fe8ce336e037)
 
 
 
